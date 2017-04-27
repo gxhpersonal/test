@@ -1,37 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="testApp">
 <head>
 	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 	<title>android or ios</title>
+	<link rel="stylesheet" href="./css/index.css">
 </head>
-<body>
-	<style>
-		#btn{
-			width: 100%;
-			height: 100px;
-			border:1px solid #23e34c;
-			text-align: center;
-			line-height: 100px;
-			border-radius: 5px;
-		}
-	</style>
+<body ng-controller="testAppController">
+
 	<div id="btn">点击测试浏览器环境</div>
 
-	<script>
-		var btn = document.getElementById('btn');
-		btn.onclick = function(){
-			alert(111)
-		}
-
-		var u = navigator.userAgent;
-		btn.innerHTML = u;
-        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-        setTimeout(function(){
-        	alert('是否是Android：'+isAndroid);
-        alert('是否是iOS：'+isiOS);
-    },1000)
-        
-</script>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+<script src="https://cdn.bootcss.com/angular.js/1.6.0/angular.js"></script>
+<script src="./js/index.js"></script>
 </body>
 </html>
