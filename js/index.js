@@ -14,6 +14,10 @@ var testApp = angular.module("testApp",[]);
     //     alert('是否是iOS：'+isiOS);
     // },1000)
 
+$scope.tijiao = function(){
+     $('#forminput').focus()
+}
+
 	//点击下一步时验证报错
     $scope.clickError = function (thisName, errTxt1, errTxt2) {
         var $this = $('#' + thisName),_thisVal = $this.val();

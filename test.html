@@ -8,7 +8,13 @@
 </head>
 <body ng-controller="testAppController">
 
-	<div id="btn">点击测试浏览器环境</div>
+<div class="wrap">
+<div id="btn">点击测试浏览器环境</div>
+<div ng-click="clickError()"></div>
+<div class="form"><input type="text" id="forminput"></div>
+<div class="tijiao" ng-click="tijiao()">点击提交</div>
+</div>
+	
 
 <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
 <script src="https://cdn.bootcss.com/angular.js/1.6.0/angular.js"></script>
