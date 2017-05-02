@@ -14,11 +14,14 @@ var testApp = angular.module("testApp",[]);
     //     alert('是否是iOS：'+isiOS);
     // },1000)
 
+function focus(){
+    $('#forminput').focus()
+}
 $scope.tijiao = function(){
        $http.get("http://myserver/api").then(function(data) {  
-        $('#forminput').focus()
+        focus()
     }).catch(function(){
-        $('#forminput').focus()
+       focus()
     })
 }
 
