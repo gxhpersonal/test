@@ -15,7 +15,11 @@ var testApp = angular.module("testApp",[]);
     // },1000)
 
 $scope.tijiao = function(){
-     $('#forminput').focus()
+       $http.get("http://myserver/api").then(function(data) {  
+        $('#forminput').focus()
+    }).catch(function(){
+        $('#forminput').focus()
+    })
 }
 
 	//点击下一步时验证报错
