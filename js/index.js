@@ -15,7 +15,7 @@ var testApp = angular.module("testApp",[]);
     // },1000)
 
 function focus(){
-    $('#forminput').focus()
+    $('body #forminput').focus()
 }
 $scope.tijiao = function(){
        $http.get("http://myserver/api").then(function(data) {  
