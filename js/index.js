@@ -36,6 +36,7 @@ $scope.tijiao = function(){
         alert(1)
     }
 });
+alert(3)
 focus()
 }
 
