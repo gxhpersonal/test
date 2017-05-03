@@ -30,12 +30,13 @@ $scope.tijiao = function(){
     url: "http://www.baidu.com/",
     async:false,
     success: function(data){
-        focus()
+        alert(2)
     },
     error:function(data){
-        focus()
+        alert(1)
     }
 });
+focus()
 }
 
 	//点击下一步时验证报错
