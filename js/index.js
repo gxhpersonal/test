@@ -15,14 +15,27 @@ var testApp = angular.module("testApp",[]);
     // },1000)
 
 function focus(){
-    $('body #forminput').focus()
+    $('#forminput').focus();
 }
+// $scope.tijiao = function(){
+//        $http.get("http://myserver/api").then(function(data) {  
+//         focus()
+//     }).catch(function(){
+//        focus()
+//     })
+// }
+
 $scope.tijiao = function(){
-       $http.get("http://myserver/api").then(function(data) {  
+     $.ajax({
+    url: "http://www.baidu.com/",
+    async:false,
+    success: function(data){
         focus()
-    }).catch(function(){
-       focus()
-    })
+    },
+    error:function(data){
+        focus()
+    }
+});
 }
 
 	//点击下一步时验证报错
