@@ -1,25 +1,4 @@
-<html>
-<meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,minimal-ui">
-
-<head>
-	<script type="text/javascript">
-		function selText() {
-			document.getElementById("txt1").select()
-		}
-	</script>
-</head>
-
-<body>
-
-	<textarea id="txt1">Hello world....</textarea>
-	<input type="button" value="Select text" onclick="selText()">
-
-</body>
-
-</html>
-
-
-<!-- <!doctype html>
+<!doctype html>
 <html>
 
 <head>
@@ -55,9 +34,15 @@
 	</div>
 	<textarea name="" id="textarea" cols="30" rows="3" onclick="selText()">点击全选点击全选点击全选点击全选点击全选点击全选点击全选点击全选</textarea>
 	<input type="text" value="点击全选点击全选点击全选点击全选点击全选点击全选点击全选点击全选" onclick="this.select()">
+
 	<script>
 		function selText() {
-			document.getElementById("textarea").select();
+			var inputs = document.getElementById("textarea");
+			inputs.focus();
+			inputs.select();
+			try {
+				document.execCommand('copy');
+			} catch (e) { }
 		}
 		(function () {
 
@@ -96,7 +81,7 @@
 	</script>
 </body>
 
-</html> -->
+</html>
 
 <!--<!DOCTYPE html>
 <html lang="en" ng-app="testApp">
