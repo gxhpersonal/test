@@ -32,8 +32,12 @@
 	<div>
 		<a href="huizuche://" class="label">立即打开ios&gt;&gt;</a>
 	</div>
-	<textarea name="" id="" cols="30" rows="3" onclick="this.select()">点击全选点击全选点击全选点击全选点击全选点击全选点击全选点击全选</textarea>
+	<textarea name="" id="textarea" cols="30" rows="3" onclick="selText()">点击全选点击全选点击全选点击全选点击全选点击全选点击全选点击全选</textarea>
+	<input type="text" value="点击全选点击全选点击全选点击全选点击全选点击全选点击全选点击全选" onclick="this.select()">
 	<script>
+		function selText() {
+			document.getElementById("textarea").select();
+		}
 		(function () {
 
 			var ua = navigator.userAgent.toLowerCase();
