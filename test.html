@@ -29,32 +29,26 @@
 	<div>
 		<a href="huizuche://" class="label">立即打开ios&gt;&gt;</a>
 	</div>
-	<textarea name="" id="cc" cols="30" rows="3" onclick="">点击全选点击全选点击全选点击全选点击全选点击全选点击全选点击全选</textarea>
-	<input type="text" id="bb" value="点击全选点击全选点击全选点击全选点击全选点击全选点击全选点击全选" onclick="selectText('bb')">
-	<div id="aa" onclick="selectText('aa')">
+	<textarea name="" id="cc" cols="30" rows="3" readonly onclick="SelectText('cc')">点击全选点击全选点击全选点击全选点击全选点击全选点击全选点击全选</textarea>
+	<input type="text" id="bb" value="点击全选点击全选点击全选点击全选点击全选点击全选点击全选点击全选" onclick="SelectText('bb')">
+	<div id="aa">
 		xxxxxxxxxxxxxx<br /> xxxxxxxxxxxxxx
 		<br /> xxxxxxxxxxxxxx
 		<br /> xxxxxxxxxxxxxx
 		<br />
 	</div>
 
+	<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 	<script>
-		function selectText(element) {
-			var text = document.getElementById(element);
-			if (document.body.createTextRange) {
-				var range = document.body.createTextRange();
-				range.moveToElementText(text);
-				range.select();
-			} else if (window.getSelection) {
-				var selection = window.getSelection();
-				var range = document.createRange();
-				range.selectNodeContents(text);
-				selection.removeAllRanges();
-				selection.addRange(range);
-			} else {
-				alert("none");
-			}
+		function SelectText(name) {
+			var input = document.getElementById(name);
+			var len = input.value.length;
+			input.focus();
+			input.setSelectionRange(0, len);
 		}
+		$('#btn').on('click', function () {
+			setTimeout(SelectText(), 20);
+		})
 
 		function selText() {
 			var inputs = document.getElementById("textarea");
