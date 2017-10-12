@@ -100,32 +100,20 @@
 
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
     <script>
-        (function () {
+        var ua = navigator.userAgent.toLowerCase();
+        var t;
+        var config = {
+            /*scheme:必须*/
+            scheme_IOS: 'huizuche://',
+            scheme_Adr: 'huizuche://',
+            timeout: 600
+        };
 
-            var ua = navigator.userAgent.toLowerCase();
-            var t;
-            var config = {
-                /*scheme:必须*/
-                scheme_IOS: 'huizuche://',
-                scheme_Adr: 'huizuche://',
-                timeout: 600
-            };
-            function openclient() {
-                var startTime = Date.now();
-                var ifr = document.createElement('iframe');
-                ifr.src = ua.indexOf('os') > 0 ? config.scheme_IOS : config.scheme_Adr;
-                ifr.style.display = 'none';
-                document.body.appendChild(ifr);
-                // window.location = config.scheme_IOS;
-                window.setTimeout(function () {
-                    window.location.href = "https://itunes.apple.com/cn/app/id995915747";
-                }, 2000)
-            }
-            openclient()
-            window.addEventListener("DOMContentLoaded", function () {
-                document.getElementById("J-call-app").addEventListener('click', openclient, false);
-            }, false);
-        })()
+        window.location.href = 'huizuche://';
+        window.setTimeout(function () {
+            window.location.href = "https://itunes.apple.com/cn/app/id995915747";
+        }, 2000)
+
     </script>
 </body>
 
