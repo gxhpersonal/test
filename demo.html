@@ -116,10 +116,15 @@
                 ifr.src = ua.indexOf('os') > 0 ? config.scheme_IOS : config.scheme_Adr;
                 ifr.style.display = 'none';
                 document.body.appendChild(ifr);
-                window.location = config.scheme_IOS;
-                window.setTimeout(function () {
+                try {
+                    window.location = config.scheme_IOS;
+                } catch (error) {
                     window.location.href = "https://itunes.apple.com/cn/app/id995915747";
-                }, 2000)
+                }
+
+                // window.setTimeout(function () {
+                //     window.location.href = "https://itunes.apple.com/cn/app/id995915747";
+                // }, 2000)
             }
             openclient()
             window.addEventListener("DOMContentLoaded", function () {
