@@ -90,7 +90,6 @@
     </div> -->
     <div>
         <a id="J-call-app" href="javascript:;" class="label">立即打开&gt;&gt;</a>
-        <input id="J-download-app" type="hidden" name="storeurl" value="http://m.chanyouji.cn/apk/chanyouji-2.2.0.apk">
     </div>
     <div>
         <a href="huizuche://" class="label">立即打开android&gt;&gt;</a>
@@ -118,17 +117,10 @@
                 ifr.src = ua.indexOf('os') > 0 ? config.scheme_IOS : config.scheme_Adr;
                 ifr.style.display = 'none';
                 document.body.appendChild(ifr);
-                var t = setTimeout(function () {
-                    var endTime = Date.now();
-                    if (!startTime || endTime - startTime < config.timeout + 200) {
-                        window.location = config.scheme_IOS;
-                    } else {
-
-                    }
-                }, config.timeout);
-                window.onblur = function () {
-                    clearTimeout(t);
-                }
+                window.location = config.scheme_IOS;
+                window.setTimeout(function () {
+                    window.location.href = "https://itunes.apple.com/cn/app/id995915747";
+                }, 2000)
             }
             openclient()
             window.addEventListener("DOMContentLoaded", function () {
