@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
+    <meta name="apple-itunes-app" content="app-id=995915747, app-argument=huizuche://">
     <title>this's a demo</title>
     <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
 </head>
@@ -109,8 +109,16 @@
             timeout: 600
         };
 
-        window.location.href = 'huizuche://';
+        // 通过iframe的方式试图打开APP，如果能正常打开，会直接切换到APP，并自动阻止js其他行为
+
+        var ifr = document.createElement('iframe');
+        ifr.src = 'huizuche://';//打开app的协议，有app同事提供
+        ifr.style.display = 'none';
+        document.body.appendChild(ifr);
+
+        // window.location.href = 'huizuche://';
         window.setTimeout(function () {
+            document.body.removeChild(ifr);
             window.location.href = "https://itunes.apple.com/cn/app/id995915747";
         }, 2000)
 
