@@ -115,11 +115,11 @@
 
         function try_to_open_app() {
             timeout = setTimeout(function () {
-                window.location = 'https://itunes.apple.com/cn/app/id995915747';
-            }, 500);
+                window.location = 'https://itunes.apple.com/cn/app/id995915747?mt=8';
+            }, 300);
         }
 
-        document.getElementById("toAPP").attachEvent("onclick", try_to_open_app());
+        document.getElementById("toAPP").addEventListener("onclick", try_to_open_app())
 
         // if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
         //     var loadDateTime = new Date();
