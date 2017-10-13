@@ -114,12 +114,12 @@
         var timeout;
 
         function try_to_open_app() {
+            window.location = "huizuche://";
             timeout = setTimeout(function () {
                 window.location = 'https://itunes.apple.com/cn/app/id995915747?mt=8';
             }, 300);
         }
-
-        $("#toAPP").trigger("click")
+        try_to_open_app()
 
         // if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
         //     var loadDateTime = new Date();
