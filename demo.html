@@ -98,32 +98,52 @@
         <a href="huizuche://" class="label">立即打开ios&gt;&gt;</a>
     </div>
 
+    <div>点击连接
+        <br /> 如果已经安装网易新闻客户端将
+        <font color="blue">打开对应新闻</font>
+        <br /> 否则
+        <font color="red">打开 APPSTORE</font>
+        <br />
+        <a href="newsapp://doc/8A7OMFOJ00014JB6"></a>
+        <a id="toAPP" onClick="javascript:try_to_open_app();" href="newsapp://doc/8A7OMFOJ00014JB6">打开网易新闻</a>
+    </div>
+
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
     <script>
 
-        if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
-            var loadDateTime = new Date();
-            window.setTimeout(function () {
-                var timeOutDateTime = new Date();
-                if (timeOutDateTime - loadDateTime < 5000) {
-                    // window.location.href = "https://itunes.apple.com/cn/app/id995915747";
-                    window.location = "http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app";
-                } else {
-                    window.close();
-                }
-            }, 2000);
-            window.location = "huizuche://";
-        } else if (navigator.userAgent.match(/android/i)) {
-            var state = null;
-            try {
-                state = window.open("http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app", '_blank');
-            } catch (e) { }
-            if (state) {
-                window.close();
-            } else {
-                window.location = "huizuche://";
-            }
+        var timeout;
+
+        function try_to_open_app() {
+            timeout = setTimeout(function () {
+                window.location = 'http://itunes.apple.com/cn/app/id425349261?mt=8';
+            }, 300);
         }
+
+        document.getElementById("toAPP").attachEvent("onclick", try_to_open_app());
+
+        // if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+        //     var loadDateTime = new Date();
+        //     window.setTimeout(function () {
+        //         var timeOutDateTime = new Date();
+        //         if (timeOutDateTime - loadDateTime < 5000) {
+        //             // window.location.href = "https://itunes.apple.com/cn/app/id995915747";
+        //             window.location = "http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app"
+        //         } else {
+        //             window.close();
+        //         }
+        //     }, 2000);
+        //     window.location = "huizuche://";
+        // } else if (navigator.userAgent.match(/android/i)) {
+        //     var state = null;
+        //     try {
+        //         state = window.open("http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app", '_blank');
+        //     } catch (e) { }
+        //     if (state) {
+        //         window.close();
+        //     } else {
+        //         window.location = "huizuche://";
+        //     }
+        // }
 
         // var loadDateTime = new Date();
         // window.setTimeout(function () {
