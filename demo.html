@@ -112,10 +112,13 @@
         //         window.close();
         //     }
         // }, 2000);
-        window.location = "huizuche://";
         window.onerror = function () {
-            window.location = "https://itunes.apple.com/cn/app/id995915747";//ios下载地址 
+            window.setTimeout(function () {
+                window.location = "https://itunes.apple.com/cn/app/id995915747";//ios下载地址  
+            }, 2000);
         }
+        window.location = "huizuche://";
+
 
 
         // var ua = navigator.userAgent.toLowerCase();
