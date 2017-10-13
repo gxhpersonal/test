@@ -108,10 +108,11 @@
         var timeout;
 
         function try_to_open_app() {
-            window.location = "huizuche://";
+
             timeout = setTimeout(function () {
                 window.location = 'https://itunes.apple.com/cn/app/id995915747?mt=8';
             }, 300);
+            window.location = "huizuche://";
         }
         try_to_open_app()
 
