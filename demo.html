@@ -103,6 +103,7 @@
 
         if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
             var loadDateTime = new Date();
+            window.location = "huizuche://";
             window.setTimeout(function () {
                 var timeOutDateTime = new Date();
                 if (timeOutDateTime - loadDateTime < 5000) {
@@ -111,7 +112,7 @@
                     window.close();
                 }
             }, 25);
-            window.location = "huizuche://";
+
         } else if (navigator.userAgent.match(/android/i)) {
             var state = null;
             try {
