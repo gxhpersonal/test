@@ -101,6 +101,28 @@
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
     <script>
 
+        if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+            var loadDateTime = new Date();
+            window.setTimeout(function () {
+                var timeOutDateTime = new Date();
+                if (timeOutDateTime - loadDateTime < 5000) {
+                    window.location = "http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app";
+                } else {
+                    window.close();
+                }
+            }, 25);
+            window.location = "huizuche://";
+        } else if (navigator.userAgent.match(/android/i)) {
+            var state = null;
+            try {
+                state = window.open("http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app", '_blank');
+            } catch (e) { }
+            if (state) {
+                window.close();
+            } else {
+                window.location = "huizuche://";
+            }
+        }
 
         // var loadDateTime = new Date();
         // window.setTimeout(function () {
@@ -112,12 +134,6 @@
         //         window.close();
         //     }
         // }, 2000);
-        window.onerror = function () {
-            window.setTimeout(function () {
-                window.location = "https://itunes.apple.com/cn/app/id995915747";//ios下载地址  
-            }, 2000);
-        }
-        window.location = "huizuche://";
 
 
 
