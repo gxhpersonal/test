@@ -114,31 +114,31 @@
             }, 300);
             window.location = "huizuche://";
         }
-        // openApp()
+        openApp()
 
-        if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
-            var loadDateTime = new Date();
-            window.setTimeout(function () {
-                var timeOutDateTime = new Date();
-                if (timeOutDateTime - loadDateTime < 5000) {
-                    // window.location.href = "https://itunes.apple.com/cn/app/id995915747";
-                    window.location = "http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app"
-                } else {
-                    window.close();
-                }
-            }, 2000);
-            window.location = "huizuche://";
-        } else if (navigator.userAgent.match(/android/i)) {
-            var state = null;
-            try {
-                state = window.open("http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app", '_blank');
-            } catch (e) { }
-            if (state) {
-                window.close();
-            } else {
-                window.location = "huizuche://";
-            }
-        }
+        // if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+        //     var loadDateTime = new Date();
+        //     window.setTimeout(function () {
+        //         var timeOutDateTime = new Date();
+        //         if (timeOutDateTime - loadDateTime < 5000) {
+        //             // window.location.href = "https://itunes.apple.com/cn/app/id995915747";
+        //             window.location = "http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app"
+        //         } else {
+        //             window.close();
+        //         }
+        //     }, 2000);
+        //     window.location = "huizuche://";
+        // } else if (navigator.userAgent.match(/android/i)) {
+        //     var state = null;
+        //     try {
+        //         state = window.open("http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app", '_blank');
+        //     } catch (e) { }
+        //     if (state) {
+        //         window.close();
+        //     } else {
+        //         window.location = "huizuche://";
+        //     }
+        // }
 
         // var loadDateTime = new Date();
         // window.setTimeout(function () {
