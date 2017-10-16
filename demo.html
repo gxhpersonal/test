@@ -101,24 +101,49 @@
 
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
     <script>
+        // w = function (e) {
+        //     return m.commonChecks.isIOS ? m.commonChecks.isWeixin ? e.weixin.iOS : e.web.iOS : m.commonChecks.isWeixin ? e.weixin.Android : e.web.Android
+        // }
+
+        // h = function (link, n) {
+        //     location.href = link;
+        //     var o = w(n)
+        //         , i = Date.now()
+        //         , t = setTimeout(function () {
+        //             Date.now() - i < 1800 && (location.href = o)
+        //         }, 1500);
+        //     return window.onpagehide = function () {
+        //         clearTimeout(t)
+        //     }
+        //         ,
+        //         document.addEventListener("visibilitychange", function () {
+        //             var hide = document.hidden || document.webkitHidden;
+        //             hide ? clearTimeout(t) : ""
+        //         }, !1),
+        //         !1
+        // }
 
         var timeout;
-
         function openApp() {
+            var dates = Date.now();
             if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
                 window.location = "huizuche://?openType=H5&url=https://m.baidu.com";
                 timeout = setTimeout(function () {
-                    window.location = 'https://itunes.apple.com/cn/app/id995915747';
-                }, 1000);
+                    if (Date.now() - dates < 1800) {
+                        window.location = 'https://itunes.apple.com/cn/app/id995915747';
+                    }
+                }, 1500);
             } else if (navigator.userAgent.match(/android/i)) {
                 window.location = "huizuche://?openType=H5&url=https://m.baidu.com";
                 timeout = setTimeout(function () {
-                    window.location = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app';
-                }, 1000);
+                    if (Date.now() - dates < 1800) {
+                        window.location = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app';
+                    }
+                }, 1500);
             }
 
         }
-        // openApp()
+        openApp()
 
 
     // var timeout;
