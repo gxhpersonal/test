@@ -108,10 +108,18 @@
         var timeout;
 
         function openApp() {
-            window.location = "huizuche://";
-            timeout = setTimeout(function () {
-                window.location = 'https://itunes.apple.com/cn/app/id995915747';
-            }, 1000);
+            if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+                window.location = "huizuche://";
+                timeout = setTimeout(function () {
+                    window.location = 'https://itunes.apple.com/cn/app/id995915747';
+                }, 1000);
+            } else if (navigator.userAgent.match(/android/i)) {
+                window.location = "huizuche://";
+                timeout = setTimeout(function () {
+                    window.location = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app';
+                }, 1000);
+            }
+
         }
         openApp()
 
