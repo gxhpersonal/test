@@ -99,7 +99,7 @@
     </div>
 
     <div>点击连接
-        <a id="toAPP" onClick="javascript:openApp();" href="huizuche://">打开惠租车</a>
+        <a id="toAPP" onClick="javascript:openApp();" href="huizuche://openType=H5&url=https://m.baidu.com">打开惠租车</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
@@ -109,12 +109,12 @@
 
         function openApp() {
             if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
-                window.location = "huizuche://";
+                window.location = "huizuche://openType=H5&url=https://m.baidu.com";
                 timeout = setTimeout(function () {
                     window.location = 'https://itunes.apple.com/cn/app/id995915747';
                 }, 1000);
             } else if (navigator.userAgent.match(/android/i)) {
-                window.location = "huizuche://";
+                window.location = "huizuche://openType=H5&url=https://m.baidu.com";
                 timeout = setTimeout(function () {
                     window.location = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app';
                 }, 1000);

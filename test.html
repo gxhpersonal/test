@@ -1,130 +1,128 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
-	<title>this's a demo</title>
+	<meta charset="UTF-8">
 	<meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>微信分享</title>
 </head>
-<style>
-	textarea {
-		outline: none;
-	}
-
-	textarea:focus {
-		outline: none;
-		background: #fff;
-	}
-</style>
 
 <body>
-	<div>
-		<a id="J-call-app" href="javascript:;" class="label">立即打开&gt;&gt;</a>
-		<input id="J-download-app" type="hidden" name="storeurl" value="http://m.chanyouji.cn/apk/chanyouji-2.2.0.apk">
-	</div>
-	<div>
-		<a href="suhang://test/" class="label">立即打开android&gt;&gt;</a>
-	</div>
-	<div>
-		<a href="huizuche://" class="label">立即打开ios&gt;&gt;</a>
-	</div>
-	<textarea name="" id="cc" cols="30" rows="3" readonly onclick="SelectText('cc')">点击全选点击全选点击全选点击全选点击全选点击全选点击全选点击全选</textarea>
-	<input type="text" id="bb" value="点击全选点击全选点击全选点击全选点击全选点击全选点击全选点击全选" onclick="SelectText('bb')">
-	<input type="text">
-	<div id="aa">
-		xxxxxxxxxxxxxx<br /> xxxxxxxxxxxxxx
-		<br /> xxxxxxxxxxxxxx
-		<br /> xxxxxxxxxxxxxx
-		<br />
-	</div>
-
-	<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
+	<script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
 	<script>
-		alert(navigator.userAgent)
-		function SelectText(name) {
-			var input = document.getElementById(name);
-			var len = input.value.length;
-			input.focus();
-			input.setSelectionRange(0, len);
-		}
-		$('#btn').on('click', function () {
-			setTimeout(SelectText(), 20);
-		})
+		wechat = {
+			setWxConfig: function () {
+				Vue.http.options.emulateJSON = true;
+				Vue.http.get('/Api/Activity/GetWeixinAPIConfig?url=' + window.location.href).then(response => {
+					let weixinConfigData = response.body;
+					wx.config({
+						debug: false,
+						appId: weixinConfigData.AppId,
+						timestamp: weixinConfigData.Timestamp,
+						nonceStr: weixinConfigData.NonceStr,
+						signature: weixinConfigData.signature,
+						jsApiList: [
+							'checkJsApi',
+							'onMenuShareTimeline',
+							'onMenuShareAppMessage',
+							'onMenuShareQQ',
+							'onMenuShareWeibo',
+							'hideMenuItems',
+							'showMenuItems',
+							'hideAllNonBaseMenuItem',
+							'showAllNonBaseMenuItem',
+							'translateVoice',
+							'startRecord',
+							'stopRecord',
+							'onRecordEnd',
+							'playVoice',
+							'pauseVoice',
+							'stopVoice',
+							'uploadVoice',
+							'downloadVoice',
+							'chooseImage',
+							'previewImage',
+							'uploadImage',
+							'downloadImage',
+							'getNetworkType',
+							'openLocation',
+							'getLocation',
+							'hideOptionMenu',
+							'showOptionMenu',
+							'closeWindow',
+							'scanQRCode',
+							'chooseWXPay',
+							'openProductSpecificView',
+							'addCard',
+							'chooseCard',
+							'openCard'
+						]
+					});
+				}, response => {
+					// error callback
+				});
+			},
+			wxShare(obj) {
+				wx.ready(function () {
 
-		function selText() {
-			var inputs = document.getElementById("textarea");
-			inputs.focus();
-			inputs.select();
-			try {
-				document.execCommand('copy');
-			} catch (e) { }
-		}
-		(function () {
+					wx.onMenuShareAppMessage({
+						title: obj.shareTitle,
+						desc: obj.descContent,
+						link: obj.lineLink,
+						imgUrl: obj.imgUrl,
+						trigger: function (res) {
+							//alert('用户点击发送给朋友');
+						},
+						success: function (res) {
+							// alert('已分享');
+						},
+						cancel: function (res) {
+							//alert('已取消');
+						},
+						fail: function (res) {
+							//  alert(JSON.stringify(res));
+						}
+					});
 
-			var ua = navigator.userAgent.toLowerCase();
-			var t;
-			var config = {
-				/*scheme:必须*/
-				scheme_IOS: 'huizuche://',
-				scheme_Adr: 'suhang://test/',
-				download_url: document.getElementById('J-download-app').value,
-				timeout: 600
-			};
-			function openclient() {
-				var startTime = Date.now();
-				var ifr = document.createElement('iframe');
-				ifr.src = ua.indexOf('os') > 0 ? config.scheme_IOS : config.scheme_Adr;
-				ifr.style.display = 'none';
-				document.body.appendChild(ifr);
-				var t = setTimeout(function () {
-					var endTime = Date.now();
-					if (!startTime || endTime - startTime < config.timeout + 200) {
-						// window.location = config.download_url;
-					} else {
+					wx.onMenuShareTimeline({
+						title: obj.shareTitle,
+						desc: obj.descContent,
+						link: obj.lineLink,
+						imgUrl: obj.imgUrl,
+						trigger: function (res) {
+							// alert('用户点击分享到朋友圈');
+						},
+						success: function (res) {
+							// alert('已分享');
+						},
+						cancel: function (res) {
+							// alert('已取消');
+						},
+						fail: function (res) {
+							// alert(JSON.stringify(res));
+						}
+					});
 
-					}
-				}, config.timeout);
-				window.onblur = function () {
-					clearTimeout(t);
-				}
+					wx.onMenuShareQQ({
+						title: obj.shareTitle,
+						desc: obj.descContent,
+						link: obj.lineLink,
+						imgUrl: obj.imgUrl,
+						success: function () {
+							// 用户确认分享后执行的回调函数
+						},
+						cancel: function () {
+							// 用户取消分享后执行的回调函数
+						}
+					});
+				});
 			}
-			openclient()
-			window.addEventListener("DOMContentLoaded", function () {
-				document.getElementById("J-call-app").addEventListener('click', openclient, false);
-			}, false);
-		})()
+		}
+
+		wechat.wxShare({ shareTitle: "惠租车-驾照全球通国家查询", descContent: "[驾照全球通]全球自驾200国，顶级车行认证！", lineLink: 'https://m.huizuche.com/page/IDLinquire.html#/CountryIndex', imgUrl: "https://cdn-qiniu-app1.huizuche.com/2.6/logo_share.jpg" });
+
 	</script>
 </body>
 
 </html>
-
-<!--<!DOCTYPE html>
-<html lang="en" ng-app="testApp">
-
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
-	<title>android or ios</title>
-	<link rel="stylesheet" href="./css/index.css">
-</head>
-
-<body ng-controller="testAppController">
-
-	<div class="wrap">
-		<div id="btn">点击测试浏览器环境</div>
-		<div ng-click="clickError()"></div>
-		<div class="form">
-			<input type="text" id="forminput">
-		</div>
-		<div class="tijiao" ng-click="tijiao()">点击提交</div>
-		<a href="">点击下载惠租车APP</a>
-	</div>
-
-
-	<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
-	<script src="https://cdn.bootcss.com/angular.js/1.6.0/angular.js"></script>
-	<script src="./js/index.js"></script>
-</body>
-
-</html>-->
