@@ -10,119 +10,60 @@
 
 <body>
 	<div>微信分享</div>
+	<div>微信分享</div>
 
 
-	<script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script>
+	<!-- <script src="https://cdn.bootcss.com/vue/2.4.4/vue.js"></script> -->
 	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script>
-		var setWxConfig = function () {
-			Vue.http.options.emulateJSON = true;
-			Vue.http.get('/Api/Activity/GetWeixinAPIConfig?url=' + window.location.href).then(response => {
-				let weixinConfigData = response.body;
-				wx.config({
-					debug: false,
-					appId: weixinConfigData.AppId,
-					timestamp: weixinConfigData.Timestamp,
-					nonceStr: weixinConfigData.NonceStr,
-					signature: weixinConfigData.signature,
-					jsApiList: [
-						'checkJsApi',
-						'onMenuShareTimeline',
-						'onMenuShareAppMessage',
-						'onMenuShareQQ',
-						'onMenuShareWeibo',
-						'hideMenuItems',
-						'showMenuItems',
-						'hideAllNonBaseMenuItem',
-						'showAllNonBaseMenuItem',
-						'translateVoice',
-						'startRecord',
-						'stopRecord',
-						'onRecordEnd',
-						'playVoice',
-						'pauseVoice',
-						'stopVoice',
-						'uploadVoice',
-						'downloadVoice',
-						'chooseImage',
-						'previewImage',
-						'uploadImage',
-						'downloadImage',
-						'getNetworkType',
-						'openLocation',
-						'getLocation',
-						'hideOptionMenu',
-						'showOptionMenu',
-						'closeWindow',
-						'scanQRCode',
-						'chooseWXPay',
-						'openProductSpecificView',
-						'addCard',
-						'chooseCard',
-						'openCard'
-					]
+		window.WeixinShareMobile = {
+			weixinShare: function (param) {
+				wx.error(function (res) {
 				});
-			}, response => {
-				// error callback
-			});
+				wx.ready(function () {
+					wx.onMenuShareAppMessage({
+						desc: param.descContent,
+						title: param.shareTitle,
+						link: param.lineLink,
+						imgUrl: param.imgUrl,
+						trigger: function (res) {
+							//alert('用户点击发送给朋友');
+						},
+						success: function (res) {
+							// alert('已分享');
+
+						},
+						cancel: function (res) {
+							//alert('已取消');
+						},
+						fail: function (res) {
+							//alert(JSON.stringify(res));
+						}
+					});
+					wx.onMenuShareTimeline({
+						desc: param.descContent,
+						title: param.friendTitle == undefined ? param.shareTitle : param.friendTitle,
+						link: param.lineLink,
+						imgUrl: param.imgUrl,
+						trigger: function (res) {
+							//alert('用户点击发送给朋友');
+						},
+						success: function (res) {
+							//alert('已分享');
+
+						},
+						cancel: function (res) {
+							//alert('已取消');
+						},
+						fail: function (res) {
+							// alert(JSON.stringify(res));
+						}
+					});
+				});
+			}
 		};
-		var wxShare = function (obj) {
-			wx.ready(function () {
 
-				wx.onMenuShareAppMessage({
-					title: obj.shareTitle,
-					desc: obj.descContent,
-					link: obj.lineLink,
-					imgUrl: obj.imgUrl,
-					trigger: function (res) {
-						//alert('用户点击发送给朋友');
-					},
-					success: function (res) {
-						// alert('已分享');
-					},
-					cancel: function (res) {
-						//alert('已取消');
-					},
-					fail: function (res) {
-						//  alert(JSON.stringify(res));
-					}
-				});
-
-				wx.onMenuShareTimeline({
-					title: obj.shareTitle,
-					desc: obj.descContent,
-					link: obj.lineLink,
-					imgUrl: obj.imgUrl,
-					trigger: function (res) {
-						// alert('用户点击分享到朋友圈');
-					},
-					success: function (res) {
-						// alert('已分享');
-					},
-					cancel: function (res) {
-						// alert('已取消');
-					},
-					fail: function (res) {
-						// alert(JSON.stringify(res));
-					}
-				});
-
-				wx.onMenuShareQQ({
-					title: obj.shareTitle,
-					desc: obj.descContent,
-					link: obj.lineLink,
-					imgUrl: obj.imgUrl,
-					success: function () {
-						// 用户确认分享后执行的回调函数
-					},
-					cancel: function () {
-						// 用户取消分享后执行的回调函数
-					}
-				});
-			});
-		}
-
-		wxShare({ shareTitle: "惠租车-驾照全球通国家查询", descContent: "[驾照全球通]全球自驾200国，顶级车行认证！", lineLink: 'https://m.huizuche.com/page/IDLinquire.html#/CountryIndex', imgUrl: "https://cdn-qiniu-app1.huizuche.com/2.6/logo_share.jpg" });
+		window.WeixinShareMobile.weixinShare({ shareTitle: "惠租车-驾照全球通国家查询", descContent: "[驾照全球通]全球自驾200国，顶级车行认证！", lineLink: 'https://m.huizuche.com/page/IDLinquire.html#/CountryIndex', imgUrl: "https://cdn-qiniu-app1.huizuche.com/2.6/logo_share.jpg" });
 
 	</script>
 </body>
