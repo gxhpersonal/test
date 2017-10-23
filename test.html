@@ -12,10 +12,21 @@
 	<div>微信分享</div>
 	<div>微信分享</div>
 
+	<div class="return">返回</div>
+
 
 	<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script>
+		window.history.pushState('forward', '', 'http://m.huizuche.com')
+		$(".return").on('click', function () {
+			window.history.go(-1)
+		})
+
+
+
+
+
 		var weixinConfigData = {};
 		$(function () {
 			$.ajax({
