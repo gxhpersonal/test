@@ -7,18 +7,30 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>微信分享</title>
 </head>
+<style>
+	.text {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: box;
+		display: -webkit-box;
+		line-clamp: 2;
+		-webkit-line-clamp: 2;
+		-webkit-box-orient: vertical;
+		-moz-box-orient: vertical;
+	}
+</style>
 
 <body>
 	<div>微信分享</div>
 	<div>微信分享</div>
 
 	<div class="return">返回</div>
-
+	<p class="text">这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本</p>
 
 	<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<script>
-		alert(window.location.origin)
+
 		$(".return").on('click', function () {
 			window.history.go(-2)
 		})
