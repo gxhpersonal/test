@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        body {
+            height: 10000px;
+        }
+
+        .div {
+            display: block;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            position: fixed;
+            bottom: 0;
+        }
+    </style>
+    <div class="div">这是一个div</div>
+    <script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
+    <script>
+        var timer;
+
+        window.onscroll = function () {
+            $('.div').hide()
+            if (timer)
+                clearTimeout(timer)
+
+            timer = setTimeout(function () {
+                $('.div').show()
+            }, 1000)
+        }
+    </script>
+</body>
+
+</html>
