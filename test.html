@@ -18,9 +18,33 @@
 		-webkit-box-orient: vertical;
 		-moz-box-orient: vertical;
 	}
+
+	.wrap {
+		width: 100px;
+		height: 100px;
+		background: #fac;
+		position: relative;
+	}
+
+	.wrap::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 200%;
+		height: 200%;
+		background-color: red;
+		border: 1px solid black;
+		transform-origin: 0 0;
+		transform: scale(.5);
+		-webkit-transform-origin: 0 0;
+		-webkit-transform: scale(.5);
+	}
 </style>
 
 <body>
+
+	<div class="wrap"></div>
 	<div>微信分享</div>
 	<div>微信分享</div>
 
@@ -33,6 +57,10 @@
 
 		$(".return").on('click', function () {
 			window.history.go(-2)
+		})
+
+		$(".wrap").on("click", function () {
+			alert(1)
 		})
 
 
