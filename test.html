@@ -96,24 +96,30 @@
 
 	<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+	<!-- <script src="https://m.zuzuche.com/w/tidl/js/clipboard1_6/clipboard.min.js"></script> -->
+	<script src="https://cdn.bootcss.com/clipboard.js/2.0.0/clipboard.js"></script>
 	<script>
-
-		var clipboard1 = new ClipboardJS('.copy1');
-		clipboard1.on('success', function (e) {
-			alert('复制成功');
+		var clipboard1 = new ClipboardJS('.copy1', {
+			container: document.getElementById('foo1')
 		});
+		clipboard1.on("success", function (t) {
+			alert('复制成功');
+		})
 		clipboard1.on('error', function (e) {
 			alert("复制失败")
 		});
 
-		var clipboard2 = new ClipboardJS('.copy2');
-		clipboard2.on('success', function (e) {
-			alert('复制成功');
-		});
-		clipboard2.on('error', function (e) {
-			alert("复制失败")
-		});
+		// var clipboard2 = new Clipboard(".copy2", {
+		// 	text: function () {
+		// 		return $(".copy2").html()
+		// 	}
+		// })
+		// clipboard2.on("success", function (t) {
+		// 	alert('复制成功');
+		// })
+		// clipboard2.on('error', function (e) {
+		// 	alert("复制失败")
+		// });
 
 
 		$(".return").on('click', function () {
