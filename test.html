@@ -73,12 +73,12 @@
 	<!--复制测试-->
 	<div id="foo1">这是一个复制文本</div>
 	<br>
-	<div class="copy1">点击复制1</div>
+	<div class="J-browserLink">点击复制1</div>
 	<br>
 
 	<input id="foo2" value="这是另一个复制文本">
 	<br>
-	<div class="copy2" data-clipboard-target="#foo2">点击复制2</div>
+	<!-- <div class="copy2" data-clipboard-target="#foo2">点击复制2</div> -->
 	<br>
 
 	<!--移动端border一像素测试-->
@@ -100,29 +100,40 @@
 	<!-- <script src="https://cdn.bootcss.com/clipboard.js/2.0.0/clipboard.js"></script> -->
 	<!-- <script src="https://cdn.bootcss.com/clipboard.js/1.6.0/clipboard.js"></script> -->
 	<script>
-		var clipboard1 = new Clipboard(".copy1", {
+
+		var clipboard1 = new Clipboard(".J-browserLink", {
 			text: function () {
-				return $(".copy1").html()
+				return $(".J-browserLink").html()
 			}
 		})
 		clipboard1.on("success", function (t) {
 			alert('复制成功');
 		})
-		clipboard1.on('error', function (e) {
-			alert("复制失败")
-		});
 
-		var clipboard2 = new Clipboard(".copy2", {
-			text: function () {
-				return $(".foo2").val()
-			}
-		})
-		clipboard2.on("success", function (t) {
-			alert('复制成功');
-		})
-		clipboard2.on('error', function (e) {
-			alert("复制失败")
-		});
+
+		// var clipboard1 = new Clipboard(".copy1", {
+		// 	text: function () {
+		// 		return $(".copy1").html()
+		// 	}
+		// })
+		// clipboard1.on("success", function (t) {
+		// 	alert('复制成功');
+		// })
+		// clipboard1.on('error', function (e) {
+		// 	alert("复制失败")
+		// });
+
+		// var clipboard2 = new Clipboard(".copy2", {
+		// 	text: function () {
+		// 		return $(".foo2").val()
+		// 	}
+		// })
+		// clipboard2.on("success", function (t) {
+		// 	alert('复制成功');
+		// })
+		// clipboard2.on('error', function (e) {
+		// 	alert("复制失败")
+		// });
 
 
 		$(".return").on('click', function () {
