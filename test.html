@@ -78,7 +78,7 @@
 
 	<input id="foo2" value="这是另一个复制文本">
 	<br>
-	<!-- <div class="copy2" data-clipboard-target="#foo2">点击复制2</div> -->
+	<div class="copy2" data-clipboard-target="#foo2" style="cursor: pointer;">点击复制2</div>
 	<br>
 
 	<!--移动端border一像素测试-->
@@ -110,30 +110,17 @@
 			alert('复制成功');
 		})
 
-
-		// var clipboard1 = new Clipboard(".copy1", {
-		// 	text: function () {
-		// 		return $(".copy1").html()
-		// 	}
-		// })
-		// clipboard1.on("success", function (t) {
-		// 	alert('复制成功');
-		// })
-		// clipboard1.on('error', function (e) {
-		// 	alert("复制失败")
-		// });
-
-		// var clipboard2 = new Clipboard(".copy2", {
-		// 	text: function () {
-		// 		return $(".foo2").val()
-		// 	}
-		// })
-		// clipboard2.on("success", function (t) {
-		// 	alert('复制成功');
-		// })
-		// clipboard2.on('error', function (e) {
-		// 	alert("复制失败")
-		// });
+		var clipboard2 = new Clipboard(".copy2", {
+			text: function () {
+				return $(".foo2").val()
+			}
+		})
+		clipboard2.on("success", function (t) {
+			alert('复制成功');
+		})
+		clipboard2.on('error', function (e) {
+			alert("复制失败")
+		});
 
 
 		$(".return").on('click', function () {
