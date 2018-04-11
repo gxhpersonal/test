@@ -99,18 +99,20 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
 	<script>
 
-		var clipboard = new ClipboardJS('.copy1');
-		clipboard.on('success', function (e) {
+		var clipboard1 = new ClipboardJS('.copy1');
+		clipboard1.on('success', function (e) {
 			alert('复制成功');
-
-			e.clearSelection();
+		});
+		clipboard1.on('error', function (e) {
+			alert("复制失败")
 		});
 
-		var clipboard = new ClipboardJS('.copy2');
-		clipboard.on('success', function (e) {
+		var clipboard2 = new ClipboardJS('.copy2');
+		clipboard2.on('success', function (e) {
 			alert('复制成功');
-
-			e.clearSelection();
+		});
+		clipboard2.on('error', function (e) {
+			alert("复制失败")
 		});
 
 
