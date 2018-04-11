@@ -8,6 +8,11 @@
 	<title>微信分享</title>
 </head>
 <style>
+	body {
+		margin: 0;
+		height: 10000px;
+	}
+
 	.text {
 		overflow: hidden;
 		text-overflow: ellipsis;
@@ -40,14 +45,49 @@
 		-webkit-transform-origin: 0 0;
 		-webkit-transform: scale(.5);
 	}
+
+	.fixed-bar {
+		position: fixed;
+		top: 0;
+		right: 0;
+		width: 5px;
+		height: 100%;
+		background: #0fbc8b;
+		z-index: 1;
+	}
+
+	.title {
+		font-size: 20px;
+		color: #131c28;
+		font-weight: bold;
+		padding: 0 5.33%;
+		margin: 24px 0 14px;
+		border-right: 5px solid #ffdc33;
+		position: relative;
+		z-index: 2;
+		line-height: 38px;
+	}
 </style>
 
 <body>
+	<!--复制测试-->
+	<div id="foo1">这是一个复制文本</div>
+	<br>
+	<div class="copy1" data-clipboard-target="#foo1">点击复制1</div>
+	<br>
 
-	<input id="foo" value="https://github.com/zenorocha/clipboard.js.git">
-	<div class="copy" data-clipboard-target="#foo">点击复制</div>
+	<input id="foo2" value="这是另一个复制文本">
+	<br>
+	<div class="copy2" data-clipboard-target="#foo2">点击复制2</div>
+	<br>
 
+	<!--移动端border一像素测试-->
 	<div class="wrap"></div>
+
+	<!--position:relative和z-index的联系测试-->
+	<div class="fixed-bar"></div>
+	<p class="title">美国11天自驾路线|郭小姐的慢生活自驾攻略</p>
+
 	<div>微信分享</div>
 	<div>微信分享</div>
 
@@ -59,19 +99,20 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
 	<script>
 
-		var clipboard = new ClipboardJS('.copy');
+		var clipboard = new ClipboardJS('.copy1');
 		clipboard.on('success', function (e) {
-			alert('Action:', e.action);
-			alert('Text:', e.text);
-			alert('Trigger:', e.trigger);
+			alert('复制成功');
 
 			e.clearSelection();
 		});
 
-		clipboard.on('error', function (e) {
-			console.error('Action:', e.action);
-			console.error('Trigger:', e.trigger);
+		var clipboard = new ClipboardJS('.copy2');
+		clipboard.on('success', function (e) {
+			alert('复制成功');
+
+			e.clearSelection();
 		});
+
 
 		$(".return").on('click', function () {
 			window.history.go(-2)
