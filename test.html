@@ -79,6 +79,7 @@
 </style>
 
 <body>
+	<button class="btn1">把 scroll top offset 设置为 100px</button>
 	<!--visibility测试-->
 	<div class="visibility"></div>
 
@@ -142,6 +143,10 @@
 		$(".wrap").on("click", function () {
 			alert(1)
 		})
+
+		$(".btn1").click(function () {
+			document.body.scrollTop = document.documentElement.scrollTop = 100
+		});
 
 
 
