@@ -111,27 +111,71 @@
 
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
     <script>
+        //指定链接提示跳转/下载APP
+        function getParameterByName(name, queryString) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            if (!queryString) {
+                queryString = location.search;
+            }
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+                results = regex.exec(queryString);
+            return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+        }
+        var isOpen = getParameterByName("openapp") === "yes";
+        var isDown = getParameterByName("downapp") === "yes";
         var timeout;
-        function openApp() {
+        function openAndDown() {
             var dates = Date.now();
             if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
-                window.location = "huizuche://?openType=H5&url=https://m.baidu.com";
+                window.location = "huizuche://?openType=H5&url=" + location.href;
                 timeout = setTimeout(function () {
                     if (Date.now() - dates < 1800) {
                         window.location = 'https://itunes.apple.com/cn/app/id995915747';
                     }
                 }, 1500);
             } else if (navigator.userAgent.match(/android/i)) {
-                window.location = "huizuche://?openType=H5&url=https://m.baidu.com";
+                window.location = "huizuche://?openType=H5&url=" + location.href;
                 timeout = setTimeout(function () {
                     if (Date.now() - dates < 1800) {
                         window.location = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app';
                     }
                 }, 1500);
             }
-
         }
-        openApp()
+
+        if (isOpen && isDown) {
+            setTimeout(openApp(), 2000)
+        } else if (isOpen && !isDown) {
+            window.location = "huizuche://?openType=H5&url=" + location.href;
+        } else if (!isOpen && isDown) {
+            if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+                window.location = 'https://itunes.apple.com/cn/app/id995915747';
+            } else if (navigator.userAgent.match(/android/i)) {
+                window.location = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app';
+            }
+        }
+
+        // var timeout;
+        // function openApp() {
+        //     var dates = Date.now();
+        //     if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+        //         window.location = "huizuche://?openType=H5&url=https://m.baidu.com";
+        //         timeout = setTimeout(function () {
+        //             if (Date.now() - dates < 1800) {
+        //                 window.location = 'https://itunes.apple.com/cn/app/id995915747';
+        //             }
+        //         }, 1500);
+        //     } else if (navigator.userAgent.match(/android/i)) {
+        //         window.location = "huizuche://?openType=H5&url=https://m.baidu.com";
+        //         timeout = setTimeout(function () {
+        //             if (Date.now() - dates < 1800) {
+        //                 window.location = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app';
+        //             }
+        //         }, 1500);
+        //     }
+
+        // }
+        // openApp()
 
         // w = function (e) {
         //     return m.commonChecks.isIOS ? m.commonChecks.isWeixin ? e.weixin.iOS : e.web.iOS : m.commonChecks.isWeixin ? e.weixin.Android : e.web.Android
