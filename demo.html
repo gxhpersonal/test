@@ -144,7 +144,7 @@
         }
 
         if (isOpen && isDown) {
-            setTimeout(openApp(), 2000)
+            setTimeout(openAndDown(), 2000)
         } else if (isOpen && !isDown) {
             window.location = "huizuche://?openType=H5&url=" + location.href;
         } else if (!isOpen && isDown) {
