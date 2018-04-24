@@ -108,6 +108,8 @@
         <a href="huizuche://" class="label">立即打开ios&gt;&gt;</a>
     </div>
 
+    <div class="count">0</div>
+
 
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
     <script>
@@ -166,6 +168,15 @@
                 console.log(789)
             }, 2000)
         }
+
+        var count = $(".count").text();
+        var timer = setInterval(() => {
+            count++;
+            $(".count").text(count);
+            if (count == 5) {
+                clearInterval(timer)
+            }
+        }, 1000)
 
         // var timeout;
         // function openApp() {
