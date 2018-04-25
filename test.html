@@ -76,9 +76,70 @@
 		height: 100%;
 		visibility: hidden;
 	}
+
+	.ip-item-label {
+		width: 100%;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-ms-flex-direction: row;
+		-webkit-flex-direction: row;
+		flex-direction: row;
+		justify-content: flex-start;
+	}
+
+	.ip-item-label label {
+		display: inline-block;
+		padding: 2px 6px;
+		border-radius: 2px;
+		position: relative;
+		font-size: 1rem;
+		margin-right: 6px;
+		margin-bottom: 5px;
+		display: -webkit-box;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-ms-flex-direction: row;
+		-webkit-flex-direction: row;
+		flex-direction: row;
+		justify-content: center;
+		align-items: center;
+		color: #f58948;
+	}
+
+	.ip-item-label label::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 200%;
+		height: 200%;
+		-webkit-transform-origin: 0 0;
+		-moz-transform-origin: 0 0;
+		-ms-transform-origin: 0 0;
+		-o-transform-origin: 0 0;
+		transform-origin: 0 0;
+		-webkit-transform: scale(.5, .5);
+		-moz-transform: scale(.5, .5);
+		-ms-transform: scale(.5, .5);
+		-o-transform: scale(.5, .5);
+		transform: scale(.5, .5);
+		overflow: hidden;
+		border: 1px solid #f58948;
+		border-radius: 2px;
+	}
 </style>
 
 <body>
+	<!--1px边框bug测试-->
+	<p class="ip-item-label">
+		<label>一人投保 全车人受益</label>
+	</p>
+
 	<button class="btn1">把 scroll top offset 设置为 100px</button>
 	<!--visibility测试-->
 	<div class="visibility"></div>
