@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>日期插件</title>
+</head>
+
+<body>
+    <link rel="stylesheet" href="https://cdn-aliyun-h5js.huizuche.com/Content/mobiscroll-theme.css">
+    <link rel="stylesheet" href="https://cdn-aliyun-h5js.huizuche.com//Content/mobiscroll.custom-2.17.1.min.css">
+    <style>
+        .dw-i {
+            color: #758ea3;
+        }
+
+        .dw-sel .dw-i {
+            color: #fff;
+        }
+
+        .dwwol {
+            top: 39%;
+            background-image: url(https://cdn-qiniu-hzch5.huizuche.com/anniu.png);
+            background-repeat: no-repeat;
+            background-size: 67px 32px;
+            background-position: center;
+        }
+    </style>
+
+    <div id="js_date">
+    </div>
+
+    <script src="https://m.huizuche.com/bundles/newZeptoForH5Fe"></script>
+    <script src="https://cdn-aliyun-h5js.huizuche.com/Scripts/libs/mobiscroll.zepto.js"></script>
+    <script src="https://cdn-aliyun-h5js.huizuche.com/Scripts/libs/mobiscroll.custom-2.17.1.min.js"></script>
+    <script src="https://cdn-aliyun-h5js.huizuche.com/Scripts/libs/mobiscroll.core.min-2.6.2-zh.js"></script>
+    <script>
+        let now = new Date();
+        // DOM 更新了
+        $('#js_date').mobiscroll().date(
+            {
+                theme: 'jqm',
+                lang: 'zh',
+                rows: '5',
+                // height: '50',
+                // CalendarHeight: '400',
+                // animate: 'slideup',
+                //display是指弹出框的位置，分别可以使用top,bottom,inline来定义，inline页面一加载就能看到这个弹出框
+                display: 'inline',
+                layout: 'liquid',
+                showLabel: false,
+                // headerText: '有效期',
+                timeWheels: 'yy年mm月',
+                startYear: now.getFullYear() - 70,
+                endYear: now.getFullYear() + 70,
+                minDate: new Date(),
+                // minWidth: 70,
+                // monthSuffix: '月',
+                // yearSuffix: '年',
+                // daySuffix: '日',
+                dateFormat: 'yy年mm月',
+                dateOrder: 'yymm',
+                onSelect: function (event, inst) {
+                    //var $this = $(this);
+                    that.dateErr = false;
+                    that.inputBirthStyle = {
+                        "border-bottom": "1px solid #E1E8EB"
+                    }
+                }
+            }
+        )
+    </script>
+</body>
+
+</html>
