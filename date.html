@@ -37,7 +37,8 @@
     <script src="https://cdn-aliyun-h5js.huizuche.com/Scripts/libs/mobiscroll.custom-2.17.1.min.js"></script>
     <script src="https://cdn-aliyun-h5js.huizuche.com/Scripts/libs/mobiscroll.core.min-2.6.2-zh.js"></script>
     <script>
-        let now = new Date();
+        var now = new Date();
+        var nextYear = new Date(now.setMonth(now.getMonth() + 11));
         // DOM 更新了
         $('#js_date').mobiscroll().date(
             {
@@ -53,22 +54,26 @@
                 showLabel: false,
                 // headerText: '有效期',
                 timeWheels: 'yy年mm月',
-                startYear: now.getFullYear() - 70,
-                endYear: now.getFullYear() + 70,
+                // timeWheels: "yy年mm月dd日",
+                // startYear: now.getFullYear() - 70,
+                // endYear: now.getFullYear() + 70,
+                maxDate: nextYear,
                 minDate: new Date(),
                 // minWidth: 70,
                 // monthSuffix: '月',
                 // yearSuffix: '年',
                 // daySuffix: '日',
                 dateFormat: 'yy年mm月',
+                // dateFormat: "yy年mm月dd日",
                 dateOrder: 'yymm',
-                onSelect: function (event, inst) {
-                    //var $this = $(this);
-                    that.dateErr = false;
-                    that.inputBirthStyle = {
-                        "border-bottom": "1px solid #E1E8EB"
-                    }
-                }
+                // dateOrder: "yymmdd",
+                // onSelect: function (event, inst) {
+                //     //var $this = $(this);
+                //     that.dateErr = false;
+                //     that.inputBirthStyle = {
+                //         "border-bottom": "1px solid #E1E8EB"
+                //     }
+                // }
             }
         )
     </script>
