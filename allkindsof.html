@@ -11,7 +11,7 @@
 <body>
     <style>
         body {
-            height: 10000px;
+            height: 1000px;
         }
 
         .div {
@@ -22,10 +22,51 @@
             position: fixed;
             bottom: 0;
         }
+
+        .show {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+        }
     </style>
     <div class="div">这是一个div</div>
+    <div class="show">点击或者滑动屏幕隐藏这个div</div>
     <script src="https://cdn.bootcss.com/jquery/2.2.1/jquery.js"></script>
     <script>
+
+        $(".show").on('click', function () {
+            $(this).hide()
+        })
+        $("body").on("touchstart", function (e) {
+            e.preventDefault();
+            startX = e.originalEvent.changedTouches[0].pageX,
+                startY = e.originalEvent.changedTouches[0].pageY;
+        });
+        $("body").on("touchmove", function (e) {
+            e.preventDefault();
+            moveEndX = e.originalEvent.changedTouches[0].pageX,
+                moveEndY = e.originalEvent.changedTouches[0].pageY,
+                X = moveEndX - startX,
+                Y = moveEndY - startY;
+
+            if (Math.abs(X) > Math.abs(Y) && X > 0) {
+                // alert("left 2 right");
+                $(".show").hide()
+            }
+            // else if (Math.abs(X) > Math.abs(Y) && X < 0) {
+            //     alert("right 2 left");
+            // }
+            // else if (Math.abs(Y) > Math.abs(X) && Y > 0) {
+            //     alert("top 2 bottom");
+            // }
+            // else if (Math.abs(Y) > Math.abs(X) && Y < 0) {
+            //     alert("bottom 2 top");
+            // }
+            // else {
+            //     alert("just touch");
+            // }
+        });
+
         var timer;
 
         window.onscroll = function () {
