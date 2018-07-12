@@ -29,7 +29,11 @@
         }
     </style>
 
-    <div id="js_date">
+    <div>
+        <!--日期-->
+        <input type="text" id="js_date">
+        <!--日期+时间-->
+        <input type="text" id="date-time">
     </div>
 
     <script src="https://m.huizuche.com/bundles/newZeptoForH5Fe"></script>
@@ -39,6 +43,11 @@
     <script>
         var now = new Date();
         var nextYear = new Date(now.setMonth(now.getMonth() + 11));
+
+        $("#date-time").mobiscroll().date({
+            theme: 'mobiscroll',
+            animate: 'flip'
+        });
         // DOM 更新了
         $('#js_date').mobiscroll().date(
             {
@@ -49,7 +58,7 @@
                 // CalendarHeight: '400',
                 // animate: 'slideup',
                 //display是指弹出框的位置，分别可以使用top,bottom,inline来定义，inline页面一加载就能看到这个弹出框
-                display: 'inline',
+                display: 'bottom',
                 layout: 'liquid',
                 showLabel: false,
                 // headerText: '有效期',
