@@ -97,6 +97,9 @@
     </div> -->
     <input class="new-input" type="text" placeholder="输入信息">
 
+    <a href="weixin://" data-android-href="http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app" data-ios-href="https://itunes.apple.com/cn/app/id995915747"
+        class='open-btn'>免费下载</a>
+
     <a href="/test/test.html" class="open">去新的测试页面</a>
     <div>
         <a href="huizuche://splash.app?openType=H5&url=https://m.baidu.com" class="label">立即打开android&gt;&gt;</a>
@@ -113,9 +116,25 @@
 
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
     <script>
-        $(".open").on('click', function () {
-            window.location.href = "huizuche://"
+        // 下载游戏或则打开app
+        $('.open-btn').on('click', function () {
+            let href = "";
+            if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+                href = $('.open-btn').attr('data-ios-href');
+            } else {
+                href = $('.open-btn').attr('data-android-href');
+            }
+            let clickedAt = +new Date();
+            setTimeout(function () {
+                // webkitHidden检测页面对于用户的可见性(切换标签或者切换后台就不可见了)
+                !window.document.webkitHidden && setTimeout(function () {
+                    if (+new Date() - clickedAt < 2000) {
+                        window.location = href;
+                    }
+                }, 500);
+            }, 500)
         })
+
         //指定链接提示跳转/下载APP
         function getParameterByName(name, queryString) {
             name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
