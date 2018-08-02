@@ -97,7 +97,7 @@
     </div> -->
     <input class="new-input" type="text" placeholder="输入信息">
 
-    <a href="/test/test.html">去新的测试页面</a>
+    <a href="/test/test.html" class="open">去新的测试页面</a>
     <div>
         <a href="huizuche://splash.app?openType=H5&url=https://m.baidu.com" class="label">立即打开android&gt;&gt;</a>
     </div>
@@ -113,6 +113,9 @@
 
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
     <script>
+        $(".open").on('click', function () {
+            window.location.href = "huizuche://"
+        })
         //指定链接提示跳转/下载APP
         function getParameterByName(name, queryString) {
             name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
