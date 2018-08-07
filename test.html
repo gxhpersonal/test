@@ -168,6 +168,8 @@
 	<div class="return">返回</div>
 	<p class="text">这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本，这是一段很长的文本</p>
 
+	<p class="date"></p>
+
 	<script src="https://code.jquery.com/jquery-1.11.3.js"></script>
 	<script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
 	<!-- <script src="https://m.zuzuche.com/w/tidl/js/clipboard1_6/clipboard.min.js"></script> -->
@@ -213,7 +215,8 @@
 		});
 
 
-
+		var date = '2018-08-10T10:10';
+		$(".date").text(new Date(date) + new Date(date).getTime());
 
 
 		// var weixinConfigData = {};
