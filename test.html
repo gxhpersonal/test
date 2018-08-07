@@ -215,8 +215,12 @@
 		});
 
 
-		var date = '2018-10-06T11:00:00';
-		$(".date").text(new Date(date) + new Date(date).getTime());
+		var arr = "2016/11/11 11:11:11".split(/[- : \/]/),
+			date = new Date(arr[0], arr[1] - 1, arr[2], arr[3], arr[4], arr[5]);
+		console.log(date);
+
+		var date = '2018,10,06,11,00,00';
+		$(".date").text(new Date(date));
 
 
 		// var weixinConfigData = {};
