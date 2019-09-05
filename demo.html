@@ -5,7 +5,28 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="apple-itunes-app" content="app-id=995915747, app-argument=huizuche://">
     <title>this's a demo</title>
-    <meta id="viewport" name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta id="viewport" name="viewport"
+        content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <script>
+        //屏幕适应 
+        (function (win, doc) {
+            if (!win.addEventListener) return;
+            var html = document.documentElement;
+            function setFont() {
+                var html = document.documentElement;
+                var k = 750;
+                var clientW = html.clientWidth > 750 ? 750 : html.clientWidth;
+                html.style.fontSize = clientW / k * 100 + "px";
+            }
+            setFont();
+            setTimeout(function () {
+                setFont();
+            }, 300);
+            doc.addEventListener('DOMContentLoaded', setFont, false);
+            win.addEventListener('resize', setFont, false);
+            win.addEventListener('load', setFont, false);
+        })(window, document);
+    </script>
 </head>
 <style>
     .oval-wrap {
@@ -14,74 +35,35 @@
         text-align: center;
     }
 
-    .oval {
-        width: 100%;
-        height: 20px;
-        display: inline-block;
-        background-color: #41B883;
-        border-radius: 50%;
-        animation: bigSmall 1s infinite;
-        -webkit-animation: bigSmall 1s infinite;
-    }
-
-    @-webkit-keyframes bigSmall {
-        0% {
-            width: 100%;
-            height: 20px;
-            opacity: 1;
-        }
-        80% {
-            width: 50%;
-            height: 10px;
-            opacity: 0;
-        }
-        100% {
-            width: 100%;
-            height: 20px;
-            opacity: 1;
-        }
-    }
-
-    .vue-icon {
-        padding-bottom: 20px;
-        animation: upDown 1s infinite;
-        -webkit-animation: upDown 1s infinite;
-    }
-
-    @-webkit-keyframes upDown {
-        0% {
-            transform: translateY(0)
-        }
-        80% {
-            transform: translateY(50px)
-        }
-        100% {
-            transform: translateY(0)
-        }
-    }
-
-    .circle {
-        animation: rotates 1s infinite alternate;
-        -webkit-animation: rotates 1s infinite alternate;
-        width: 40%;
-    }
-
-    @-webkit-keyframes rotates {
-        0% {
-            transform: rotate(0);
-            -webkit-transform: rotate(0)
-        }
-        100% {
-            transform: rotate(360deg);
-            -webkit-transform: rotate(360deg)
-        }
-    }
-
     .new-input {
         outline: none;
         border-radius: 0;
         border: 0;
         /* -webkit-appearance: none; */
+    }
+
+    .module {
+        position: relative;
+    }
+
+    .module .img-box {
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: flex;
+        padding: 0 .2rem;
+        -webkit-justify-content: space-between;
+        -moz-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        margin-top: .32rem;
+        padding-bottom: .6rem;
+    }
+
+    .module img {
+        width: 3.49rem;
+        display: block;
+        font-size: .24rem;
     }
 </style>
 
@@ -97,8 +79,8 @@
     </div> -->
     <input class="new-input" type="text" placeholder="输入信息">
 
-    <a href="huizuche://" data-android-href="http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app" data-ios-href="https://itunes.apple.com/cn/app/id995915747"
-        class='open-btn'>免费下载</a>
+    <a href="huizuche://" data-android-href="http://a.app.qq.com/o/simple.jsp?pkgname=com.huizuche.app"
+        data-ios-href="https://itunes.apple.com/cn/app/id995915747" class='open-btn'>免费下载</a>
 
     <a href="/test/test.html" class="open">去新的测试页面</a>
     <div>
@@ -113,6 +95,14 @@
 
     <div class="count">0</div>
 
+    <div class="module">
+        <h3><span>美国 UNITED STATES</span></h3>
+        <p>租满5天首日0元</p>
+        <div class="img-box">
+            <img src="https://cdn-aliyun-h5css.huizuche.com/Content/Images/Amex/promotion/MG-1.png" alt="">
+            <img src="https://cdn-aliyun-h5css.huizuche.com/Content/Images/Amex/promotion/MG-2.png" alt="">
+        </div>
+    </div>
 
     <script src="https://code.jquery.com/jquery-1.11.3.js"></script>
     <script>
